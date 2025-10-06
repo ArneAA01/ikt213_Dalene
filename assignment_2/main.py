@@ -35,7 +35,8 @@ def hsv(image: np.ndarray) -> np.ndarray:
     return cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
 def hue_shifted(image: np.ndarray, emptyPictureArray: np.ndarray, hue: int) -> np.ndarray:
-    shifted = (image.astype(np.int16) + hue) % 256
+    shifted = image.astype(np.int16) + int(hue)
+    shifted = np.clip(shifted, 0, 255)
     emptyPictureArray[:image.shape[0], :image.shape[1], :] = shifted.astype(np.uint8)
     return emptyPictureArray
 
