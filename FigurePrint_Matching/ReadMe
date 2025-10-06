@@ -1,0 +1,21 @@
+The program compares two images using feature-matching techniques in OpenCV.
+
+Images are first converted to grayscale and preprocessed using Otsu's thresholding and inversion.
+
+Two feature detection pipelines are used:
+
+ORB + BFMatcher (fast, binary descriptors)
+
+SIFT + FLANN (more accurate, float descriptors)
+
+Keypoints and descriptors are extracted from both images.
+
+Matches are found using KNN and filtered with Lowe’s ratio test to retain only “good matches.”
+
+Results:
+
+ORB + BFMatcher found 35 good matches
+
+SIFT + FLANN found 55 good matches
+
+Conclusion: SIFT + FLANN provided more accurate and reliable matching for the images.
